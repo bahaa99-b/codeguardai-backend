@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/code-secure-ai
+
+
+  cloud:
+    gateway:
+      default-filters:
+        - StripPrefix=1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
